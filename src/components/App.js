@@ -8,8 +8,8 @@ function App() {
 
   const [data, setData] = useState(clubsData);
   const [newNameClub, setNewNameClub] = useState("");
-  const [NewWeekdays, setNewWeekdays] = useState("");
-  const [NewWeekends, setNewWeekends] = useState("");
+  const [NewWeekdays, setNewWeekdays] = useState(false);
+  const [NewWeekends, setNewWeekends] = useState(false);
   const [selectClub, setSelect] = useState('all');
    
   const handleChangeClub = (ev) => {
@@ -36,8 +36,8 @@ function App() {
     setData([...data, newClub]);
 
     setNewNameClub('');
-    setNewWeekdays('');
-    setNewWeekends('');
+    setNewWeekdays(false);
+    setNewWeekends(false);
 
     console.log(data);
   };
@@ -56,7 +56,7 @@ function App() {
         return oneClub;
       }
     })
-    
+
     .map((oneClub, i) => (
       <li className="full__clubcontainer" key={i}>
         <p className="club__name">
