@@ -10,9 +10,13 @@ function App() {
   const [newNameClub, setNewNameClub] = useState("");
   const [NewWeekdays, setNewWeekdays] = useState("");
   const [NewWeekends, setNewWeekends] = useState("");
+  // const [filter, setFilter]= useState("");
   
-
-  
+  // const handleFilter = (ev) => {
+  //   setFilter(ev.target.value);
+  //   renderFilter();
+  // };
+   
   const handleChangeClub = (ev) => {
     setNewNameClub(ev.currentTarget.value);
   };
@@ -44,7 +48,6 @@ function App() {
   };
 
 
-
   const htmlClubList = data
     .map((oneClub, index) => (
       <li className="full__clubcontainer" key={index}>
@@ -70,10 +73,10 @@ return (
       <header className="header">
       <h1 className="header__title">Mis clubs</h1>
       <p className="show__clubs">Mostrar</p>
-        <select name="select__clubs">
-          <option value="value1" selected>Todos</option>
-          <option value="value2" >los que abren entre semana</option>
-          <option value="value3">los que abren el fin de semana</option>
+      <select className="select__clubs">
+          <option value="all" selected>Todos</option>
+          <option value="onWeekdays">los que abren entre semana</option>
+          <option value="onWeekends">los que abren el fin de semana</option>
         </select>
       </header>
 
