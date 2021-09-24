@@ -48,16 +48,17 @@ function App() {
   
   const htmlClubList = data
     .filter((oneClub) => {
-      if (selectClub === 'week') {
+      if (selectClub === 'onWeekdays') {
         return oneClub.openOnWeekdays;
-      } else if (selectClub === 'weekend') {
+      } else if (selectClub === 'onWeekends') {
         return oneClub.openOnWeekend;
       } else {
         return oneClub;
       }
     })
-    .map((oneClub, index) => (
-      <li className="full__clubcontainer" key={index}>
+    
+    .map((oneClub, i) => (
+      <li className="full__clubcontainer" key={i}>
         <p className="club__name">
           <label className="contact__label">Nombre: </label>
           {oneClub.name}
