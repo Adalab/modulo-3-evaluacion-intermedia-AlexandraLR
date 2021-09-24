@@ -20,21 +20,20 @@ function App() {
   const handleChangeWeekdays = (ev) => {
     setNewWeekdays(ev.currentTarget.value);
   };
-  const handleChangeNewWeekends = (ev) => {
+  const handleChangeWeekends = (ev) => {
     setNewWeekends(ev.currentTarget.value);
   };
 
 
-  const handleClick = (ev) => {
+  const handleClickNewClub = (ev) => {
     ev.preventDefault();
 
     const newClub = {
-      "name": newNameClub, 
+      "name": newNameClub,
       "openOnWeekdays": NewWeekdays, 
       "openOnWeekend": NewWeekends,
     };
 
-    //data.push(newContact);
     setData( [...data, newClub] );
 
     setNewNameClub('');
@@ -43,7 +42,6 @@ function App() {
 
     console.log(data);
   };
-
 
 
 
@@ -56,11 +54,11 @@ function App() {
         </p>
         <p className="open__weekdays">
           <label className="contact__label">Abierto entre semana: </label>
-          {oneClub.openOnWeekdays}
+          {oneClub.openOnWeekdays ? "Sí" : "No"}
         </p>
         <p className="contact__mail">
           <label className="contact__label">Abierto en fin de semana: </label>
-          {oneClub.openOnWeekend}
+          {oneClub.openOnWeekend ? "Sí" : "No"}
         </p>
       </li>
     ));
@@ -73,8 +71,8 @@ return (
       <h1 className="header__title">Mis clubs</h1>
       <p className="show__clubs">Mostrar</p>
         <select name="select__clubs">
-          <option value="value1">Todos</option>
-          <option value="value2" selected>los que abren entre semana</option>
+          <option value="value1" selected>Todos</option>
+          <option value="value2" >los que abren entre semana</option>
           <option value="value3">los que abren el fin de semana</option>
         </select>
       </header>
@@ -97,15 +95,15 @@ return (
             value={newNameClub}
         />
         <p>¿Abre entre semana?</p>
-        <input type="checkbox" id="cbox1" onChange={handleChangeWeekdays} value={NewWeekdays} />
+        <input type="checkbox" id="cbox1" onClick={handleChangeWeekdays} value={NewWeekdays ? "Sí" : "No"} />
         ¿Abre entre semana?
-        <input type="checkbox" id="cbox2" value="second_checkbox"/>
+        <input type="checkbox" id="cbox2" onClick={handleChangeWeekends} value={NewWeekends ? "Sí" : "No"}/>
         ¿Abre los fines de semana?
           <input
             className="new-club__btn"
             type="submit"
             value="Añadir un nuevo club"
-            // onClick={handleClick}
+            onClick={handleClickNewClub}
           />
         </form>
       </main>
