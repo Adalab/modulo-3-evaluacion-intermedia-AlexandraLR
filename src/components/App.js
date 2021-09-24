@@ -60,7 +60,7 @@ function App() {
     .map((oneClub, i) => (
       <li className="full__clubcontainer" key={i}>
         <p className="club__name">
-          <label className="contact__label">Nombre: </label>
+          <label className="contact__label">#{i} </label>
           {oneClub.name}
         </p>
         <p className="open__weekdays">
