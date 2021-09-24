@@ -10,12 +10,8 @@ function App() {
   const [newNameClub, setNewNameClub] = useState("");
   const [NewWeekdays, setNewWeekdays] = useState("");
   const [NewWeekends, setNewWeekends] = useState("");
-  // const [filter, setFilter]= useState("");
-  
-  // const handleFilter = (ev) => {
-  //   setFilter(ev.target.value);
-  //   renderFilter();
-  // };
+  const [filter, setFilter] = useState("");
+
    
   const handleChangeClub = (ev) => {
     setNewNameClub(ev.currentTarget.value);
@@ -34,11 +30,11 @@ function App() {
 
     const newClub = {
       "name": newNameClub,
-      "openOnWeekdays": NewWeekdays, 
+      "openOnWeekdays": NewWeekdays,
       "openOnWeekend": NewWeekends,
     };
 
-    setData( [...data, newClub] );
+    setData([...data, newClub]);
 
     setNewNameClub('');
     setNewWeekdays('');
@@ -47,7 +43,9 @@ function App() {
     console.log(data);
   };
 
-
+  const htmlClubListWeekends = data.filter(item => openOnWeekend);
+  const htmlClubListWeekdays = data.filter(item => openOnWeekdays);
+  
   const htmlClubList = data
     .map((oneClub, index) => (
       <li className="full__clubcontainer" key={index}>
@@ -82,7 +80,7 @@ return (
 
       <main>
         {/* LISTA DE CLUBES */}
-        <ul className="contact__list">{htmlClubList}</ul>
+        <ul className="contact__list">{htmlClubList} </ul>
 
         {/* AÑADIR NUEVO CLUB */}
         <form className="new-contact__form">
